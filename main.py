@@ -8,6 +8,8 @@ app = Flask(__name__)      # Initialize Flask
 @app.route('/')
 def main():
     
+    NUM_SONGS = 3
+    
     load_dotenv(find_dotenv())                            # Load API KEYS from .env
         
     AUTH_URL = "https://accounts.spotify.com/api/token"   # Spotify URL for authentication token
@@ -32,28 +34,54 @@ def main():
     # Spotify URL for new releases API
     BASE_URL = 'https://api.spotify.com/v1/browse/new-releases'
     
-    # Query for 10 new releases
-    response = requests.get(BASE_URL + '?country=US' + '&' + 'limit=10', headers=headers)
+    # Query for new releases
+    response = requests.get(BASE_URL, 
+            
+            headers=headers,
+            
+            params={'country': 'US', 'limit' : NUM_SONGS}
+            
+            )
     
     # Data from query
     data = response.json()
     
-    song_names = [] # Empty list for songs
+    # Empty lists for song info
+    song_names = [] 
+    artist_names = []
+    song_pic = []
+    song_url = []
     
-    # Sort through JSON and to list of song names
-    for i in range (0,10):
+    # Sort through JSON and to song info lists
+    for i in range (0, NUM_SONGS):
         
-        print(data['albums']['items'][i]['name'])
         stuff = data['albums']['items'][i]['name']
-            
         song_names.append(stuff)
+        
+        stuff = data['albums']['items'][i]['artists'][0]['name']
+        artist_names.append(stuff)
+        
+        stuff = data['albums']['items'][i]['images'][i]['url']
+        song_pic.append(stuff)
+        
+        stuff = data['albums']['items'][i]['external_urls']['spotify']
+        song_url.append(stuff)
+        
+    
     
     print(song_names)
+    print(artist_names)
+    print(song_pic)
+    print(song_url)
     
     
     return render_template(
         "index.html",
-        song_names = song_names
+        NUM_SONGS = NUM_SONGS,
+        song_names = song_names,
+        artist_names = artist_names,
+        song_pic = song_pic,
+        song_url = song_url
     )
 
 

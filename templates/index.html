@@ -11,9 +11,12 @@
     
     <ol>
         
-        {%for i in range(0, 10)%} 
+        {%for i in range(0, NUM_SONGS)%} 
             
             <li>{{song_names[i]}}</li>
+            <li>{{artist_names[i]}}</li>
+            <li>{{song_pic[i]}}</li>
+            <li>{{song_url[i]}}</li>
             
         {%endfor%} 
         
