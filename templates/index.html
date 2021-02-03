@@ -7,16 +7,19 @@
 
 <body>
     
-    <h1>Hello World</h1>
+    <h1>Spotify NEW Releases</h1>
     
     <ol>
         
         {%for i in range(0, NUM_SONGS)%} 
             
-            <li>{{song_names[i]}}</li>
-            <li>{{artist_names[i]}}</li>
-            <li>{{song_pic[i]}}</li>
-            <li>{{song_url[i]}}</li>
+            <li><b>{{song_names[i]}}</b></li>
+            <span>by {{artist_names[i]}}</span>
+            <br>
+            <img src = {{song_pic[i]}} width="200" height="200">
+            <br>
+            <a href={{song_url[i]}}>Listen on Spotify</a>
+            <br>
             
         {%endfor%} 
         
