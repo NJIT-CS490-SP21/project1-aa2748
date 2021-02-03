@@ -9,7 +9,15 @@
     
     <h1>Hello World</h1>
     
-    <h2>{{ song_names }}</h2>
+    <ol>
+        
+        {%for i in range(0, 10)%} 
+            
+            <li>{{song_names[i]}}</li>
+            
+        {%endfor%} 
+        
+    </ol>
 
 </body>
 

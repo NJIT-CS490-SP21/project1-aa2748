@@ -24,7 +24,7 @@ def main():
     auth_response_data = auth_response.json()
     access_token = auth_response_data['access_token']     # Access Token returned by Spotify
     
-    # Place token header
+    # Place token in header
     headers = {
         'Authorization': 'Bearer {token}'.format(token=access_token)
     }
@@ -40,21 +40,24 @@ def main():
     
     song_names = [] # Empty list for songs
     
-    # Sort through JSON
+    # Sort through JSON and to list of song names
     for i in range (0,10):
+        
         print(data['albums']['items'][i]['name'])
+        stuff = data['albums']['items'][i]['name']
+            
+        song_names.append(stuff)
     
+    print(song_names)
     
     
     return render_template(
-        "index.html"
-        
+        "index.html",
+        song_names = song_names
     )
 
 
-
-
-
+# Instruct Flask which port and IP to run on
 app.run(
     port=int(os.getenv('PORT', 8080)), 
     host=os.getenv('IP','0.0.0.0'),
