@@ -36,11 +36,8 @@ def main():
     
     # Query for new releases
     response = requests.get(BASE_URL, 
-            
             headers=headers,
-            
             params={'country': 'US', 'limit' : NUM_SONGS}
-            
             )
     
     # Data from query
@@ -74,7 +71,7 @@ def main():
     print(song_pic)
     print(song_url)
     
-    
+    # Pass song data to index.HTML
     return render_template(
         "index.html",
         NUM_SONGS = NUM_SONGS,
