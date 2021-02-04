@@ -1,6 +1,7 @@
 from flask import Flask, render_template
 import os
 import requests
+import random
 from dotenv import load_dotenv, find_dotenv
 
 app = Flask(__name__)      # Initialize Flask
@@ -8,11 +9,11 @@ app = Flask(__name__)      # Initialize Flask
 @app.route('/')
 def main():
     
-    NUM_SONGS = 3
+    NUM_SONGS = 5
     
     load_dotenv(find_dotenv())                            # Load API KEYS from .env
         
-    AUTH_URL = "https://accounts.spotify.com/api/token"   # Spotify URL for authentication token
+    AUTH_URL = "https://accounts.spotify.com/api/token"   
     
     
     # Send spotify request of auth token using our ID and Secret Key
@@ -31,26 +32,26 @@ def main():
         'Authorization': 'Bearer {token}'.format(token=access_token)
     }
     
-    # Spotify URL for new releases API
     BASE_URL = 'https://api.spotify.com/v1/browse/new-releases'
     
     # Query for new releases
     response = requests.get(BASE_URL, 
             headers=headers,
-            params={'country': 'US', 'limit' : NUM_SONGS}
+            params={'country': 'US', 'limit' : 20}
             )
     
-    # Data from query
     data = response.json()
     
-    # Empty lists for song info
     song_names = [] 
     artist_names = []
     song_pic = []
     song_url = []
     
+    # Random index for random artist on every load
+    rand = random.sample(range(20), NUM_SONGS)
+    
     # Sort through JSON and to song info lists
-    for i in range (0, NUM_SONGS):
+    for i in rand:
         
         stuff = data['albums']['items'][i]['name']
         song_names.append(stuff)
@@ -58,7 +59,7 @@ def main():
         stuff = data['albums']['items'][i]['artists'][0]['name']
         artist_names.append(stuff)
         
-        stuff = data['albums']['items'][i]['images'][i]['url']
+        stuff = data['albums']['items'][i]['images'][0]['url']
         song_pic.append(stuff)
         
         stuff = data['albums']['items'][i]['external_urls']['spotify']
