@@ -2,6 +2,8 @@
 <html>
 
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
     <link rel="stylesheet" href={{ url_for( 'static', filename='style.css')}} />
 </head>
 
@@ -16,7 +18,12 @@
             <li><b>{{song_names[i]}}</b></li>
             <span>by {{artist_names[i]}}</span>
             <br>
-            <img src = {{song_pic[i]}} width="200" height="200">
+            
+            <div class="container">
+                <img src={{song_pic[i]}} class="image">
+            </div>
+            
+            
             <br>
             <a href={{song_url[i]}}>Listen on Spotify</a>
             <br>
@@ -24,6 +31,7 @@
         {%endfor%} 
         
     </ol>
+    
 
 </body>
 

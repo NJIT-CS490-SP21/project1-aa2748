@@ -1,11 +1,11 @@
 # Project 1 - Music Discovery
 
-This app calls Spotify's API to query new song releases and output artist info such as song name, artist, and song preview to an HTML page.
+This app calls Spotify's API to query new song releases and output artist info such as song name, artist, and song preview to an HTML page deployed by Heroku.
 
 ## Requirements
-1. pip install Flask
-2. pip install python-dotenv
-3. pip install request
+1. `pip install Flask`
+2. `pip install python-dotenv`
+3. `pip install requests`
 
 ## Copy this repo to your own personal one
 1. On https://github.com/new, create a new repository called `Music-Disc` (or the repo name you want)
@@ -15,7 +15,7 @@ This app calls Spotify's API to query new song releases and output artist info s
 5. Run `git push origin main` to push the local repo to remote.
 
 ## Setup Spotify Account
-1. Sign up at Spotify.com
+1. Sign up at https://www.spotify.com
 2. Go to Dashboard at the Spotify Developer website and accept the latest Developer Terms of Service to complete your account setup.
 3. Register your app: https://developer.spotify.com/documentation/general/guides/app-settings/#register-your-app
 
@@ -42,3 +42,10 @@ This app calls Spotify's API to query new song releases and output artist info s
 8. Go to https://dashboard.heroku.com/apps and click your App, then go to Settings, and click "Reveal Config Vars"
 10. Add your Client ID from `.env` with the matching variable name (`SPOTIFY_ID`) and value (your key, without quotation marks!)
 11. Add your Client Secret from `.env` with the matching variable name (`SPOTIFY_SECRET`) and value (your key, without quotation marks!)
+
+## Future Implementation
+1. Hover over album cover to see artist info
+2. User input to find artist
+
+## Troubleshooting
+1. AWS doesn't update the css changes. I'm testing `app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0`

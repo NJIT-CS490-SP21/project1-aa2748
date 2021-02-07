@@ -9,6 +9,8 @@ app = Flask(__name__)      # Initialize Flask
 @app.route('/')
 def main():
     
+    app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
+    
     NUM_SONGS = 5
     
     load_dotenv(find_dotenv())                            # Load API KEYS from .env
