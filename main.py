@@ -50,6 +50,7 @@ def main():
     song_id = []
     song_url = []
     song_preview = []
+    genius_link = []
     
     # Random index for random artist on every load
     rand = random.sample(range(20), NUM_SONGS)
@@ -73,8 +74,6 @@ def main():
         song_id.append(stuff)
         
     
-    print(song_id)
-    
     ALBUM_URL = 'https://api.spotify.com/v1/albums'
     
     # Another request in Album API to get song previews
@@ -93,8 +92,25 @@ def main():
         stuff = data['albums'][i]['tracks']['items'][0]['preview_url']
         song_preview.append(stuff)
         
-    print(song_preview)
     
+    
+    GENIUS_URL = 'https://api.genius.com/search'
+    
+    # Send Genius API search for each song name
+    for i in range(0, NUM_SONGS):
+        
+        response = requests.get(GENIUS_URL,
+                    headers = {'Authorization': 'Bearer ' + os.getenv('GENIUS_AUTH')},
+                    params= {'q': song_names[i] +' '+ artist_names[i]}
+            
+        )
+        
+        data = response.json()
+        
+        stuff = data['response']['hits'][0]['result']['url']
+        genius_link.append(stuff)
+        
+        
     # Pass song data to index.HTML
     return render_template(
         "index.html",
@@ -103,7 +119,8 @@ def main():
         artist_names = artist_names,
         song_pic = song_pic,
         song_url = song_url,
-        song_preview = song_preview
+        song_preview = song_preview,
+        genius_link =  genius_link
     )
 
 

@@ -15,8 +15,6 @@ body{
   transition: .5s ease;
 }
 
-
 .container:hover .image {
   opacity: 0.3;
 }
-

@@ -16,6 +16,7 @@
         {%for i in range(0, NUM_SONGS)%} 
             
             <li><b>{{song_names[i]}}</b></li>
+            
             <span>by {{artist_names[i]}}</span>
             <br>
             
@@ -23,12 +24,14 @@
                 <img src={{song_pic[i]}} class="image">
             </div>
             
-            
             {%if song_preview[i] != none%}
                 <audio src={{song_preview[i]}} controls>Preview song</audio>
             {%endif%}
             
-            <p><a href={{song_url[i]}}>Listen on Spotify</a></p>
+            <br>
+            <a href={{song_url[i]}}>Listen on Spotify</a>
+            <br>
+            <a href={{genius_link[i]}}>Genius.com Lyrics<a/>
             
         {%endfor%} 
         

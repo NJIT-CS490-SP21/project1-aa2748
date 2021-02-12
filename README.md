@@ -45,9 +45,12 @@ This app calls Spotify's API to query new song releases and output artist info s
 
 ## Challenges
 1. AWS doesn't update the css changes. Add to main `app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0`
-2. Some songs in the album API do not have a preview song mp4. When `song_preview == 'none'` have to send spotify link instead and change html to `<href>` instead of `<audio>`
+2. Some songs in the album API do not have a preview song mp4. When `song_preview == 'none'` have to omit `<audio>`
 
 ## Future Implementation
 1. User input to find artist
 2. Clean up Album API call
 3. Play full song and scrolling lyrics
+
+## TODO
+1. Genius auth readme
