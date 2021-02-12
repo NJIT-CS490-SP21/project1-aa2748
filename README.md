@@ -41,7 +41,8 @@ This app calls Spotify's API to query new song releases and output artist info s
 7. Open your app on the INTERNET (it won't work yet): `heroku open`
 8. Go to https://dashboard.heroku.com/apps and click your App, then go to Settings, and click "Reveal Config Vars"
 10. Add your Client ID from `.env` with the matching variable name (`SPOTIFY_ID`) and value (your key, without quotation marks!)
-11. Add your Client Secret from `.env` with the matching variable name (`SPOTIFY_SECRET`) and value (your key, without quotation marks!)
+11. Add your Client Secret from `.env` with the matching variable name (`SPOTIFY_SECRET`) and value
+12. Add Your Genius Authentication key from `.env`with the matching variable name (`GENIUS_AUTH`) and value
 
 ## Challenges
 1. AWS doesn't update the css changes. Add to main `app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0`
