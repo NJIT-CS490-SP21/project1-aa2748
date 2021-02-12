@@ -9,35 +9,45 @@
 
 <body>
     
-    <h1>Spotify NEW Releases</h1>
+    <h1>Discover NEW Releases</h1>
     
-    <ol>
+    
         
         {%for i in range(0, NUM_SONGS)%} 
-            
-            <li><b>{{song_names[i]}}</b></li>
-            
-            <span>by {{artist_names[i]}}</span>
-            <br>
-            
+        
             <div class="container">
+                
                 <img src={{song_pic[i]}} class="image">
-            </div>
-            
-            {%if song_preview[i] != none%}
-                <audio src={{song_preview[i]}} controls>Preview song</audio>
-            {%endif%}
-            
-            <br>
-            <a href={{song_url[i]}}>Listen on Spotify</a>
-            <br>
-            <a href={{genius_link[i]}}>Genius.com Lyrics<a/>
+                
+                <div class="artist_info">
+                    
+                    <div class="title_text">{{song_names[i]}}</div>
+                    <div class="name_text">{{artist_names[i]}}</div>
+                    
+                    <br>
+                    <a class="spotify-link" href={{song_url[i]}} target="_blank">Listen on Spotify</a>
+                    <br>
+                    <br>
+                    <a class="genius-link" href={{genius_link[i]}} target="_blank">GENIUS Lyrics<a/>
+                
+                </div>
+                
+                
+                {%if song_preview[i] != none%}
+                    <div class="audio-container">
+                        <audio src={{song_preview[i]}} controls>Preview song</audio>
+                    </div>
+                {%endif%}
+                
+                <br>
+                <br>
+                
+            </div> 
             
         {%endfor%} 
         
-    </ol>
+      
     
-    <audio src=
 </body>
 
 </html>

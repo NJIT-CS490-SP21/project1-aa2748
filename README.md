@@ -51,6 +51,8 @@ This app calls Spotify's API to query new song releases and output artist info s
 1. User input to find artist
 2. Clean up Album API call
 3. Play full song and scrolling lyrics
+4. Change Spotify and Genius links to clickable logos
+5. Add left-right scrolling instead of up down
 
 ## TODO
 1. Genius auth readme
