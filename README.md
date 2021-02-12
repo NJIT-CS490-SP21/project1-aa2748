@@ -43,9 +43,11 @@ This app calls Spotify's API to query new song releases and output artist info s
 10. Add your Client ID from `.env` with the matching variable name (`SPOTIFY_ID`) and value (your key, without quotation marks!)
 11. Add your Client Secret from `.env` with the matching variable name (`SPOTIFY_SECRET`) and value (your key, without quotation marks!)
 
-## Future Implementation
-1. Hover over album cover to see artist info
-2. User input to find artist
+## Challenges
+1. AWS doesn't update the css changes. Add to main `app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0`
+2. Some songs in the album API do not have a preview song mp4. When `song_preview == 'none'` have to send spotify link instead and change html to `<href>` instead of `<audio>`
 
-## Troubleshooting
-1. AWS doesn't update the css changes. I'm testing `app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0`
+## Future Implementation
+1. User input to find artist
+2. Clean up Album API call
+3. Play full song and scrolling lyrics

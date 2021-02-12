@@ -43,11 +43,13 @@ def main():
             )
     
     data = response.json()
-    
+
     song_names = [] 
     artist_names = []
     song_pic = []
+    song_id = []
     song_url = []
+    song_preview = []
     
     # Random index for random artist on every load
     rand = random.sample(range(20), NUM_SONGS)
@@ -67,12 +69,31 @@ def main():
         stuff = data['albums']['items'][i]['external_urls']['spotify']
         song_url.append(stuff)
         
+        stuff = data['albums']['items'][i]['id']
+        song_id.append(stuff)
+        
     
+    print(song_id)
     
-    print(song_names)
-    print(artist_names)
-    print(song_pic)
-    print(song_url)
+    ALBUM_URL = 'https://api.spotify.com/v1/albums'
+    
+    # Another request in Album API to get song previews
+    response = requests.get(ALBUM_URL, 
+            headers=headers,
+            params={'ids': song_id[0] +','+ song_id[1] +','+ song_id[2]
+                    +','+ song_id[3] +','+ song_id[4],
+                    'market': 'US'
+            }
+    )
+    
+    data = response.json()
+    
+    for i in range(0, NUM_SONGS):
+        
+        stuff = data['albums'][i]['tracks']['items'][0]['preview_url']
+        song_preview.append(stuff)
+        
+    print(song_preview)
     
     # Pass song data to index.HTML
     return render_template(
@@ -81,7 +102,8 @@ def main():
         song_names = song_names,
         artist_names = artist_names,
         song_pic = song_pic,
-        song_url = song_url
+        song_url = song_url,
+        song_preview = song_preview
     )
 
 

@@ -24,15 +24,17 @@
             </div>
             
             
-            <br>
-            <a href={{song_url[i]}}>Listen on Spotify</a>
-            <br>
+            {%if song_preview[i] != none%}
+                <audio src={{song_preview[i]}} controls>Preview song</audio>
+            {%endif%}
+            
+            <p><a href={{song_url[i]}}>Listen on Spotify</a></p>
             
         {%endfor%} 
         
     </ol>
     
-
+    <audio src=
 </body>
 
 </html>
