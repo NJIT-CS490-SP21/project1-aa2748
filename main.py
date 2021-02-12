@@ -39,7 +39,7 @@ def main():
     # Query for new releases
     response = requests.get(BASE_URL, 
             headers=headers,
-            params={'country': 'US', 'limit' : 20}
+            params={'country': 'US', 'limit' : 30}
             )
     
     data = response.json()
