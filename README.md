@@ -50,13 +50,14 @@ This app calls Spotify's API to query new song releases and output artist info s
 11. Add your Client Secret from `.env` with the matching variable name (`SPOTIFY_SECRET`) and value
 12. Add Your Genius Authentication key from `.env`with the matching variable name (`GENIUS_AUTH`) and value
 
-## Challenges
+## Technical Issues
 1. AWS doesn't update the css changes. Add to main `app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0`
 2. Some songs in the album API do not have a preview song mp4. When `song_preview == 'none'` have to omit `<audio>`
+3. Initially my spotify and genius links were unclickable because the album images were in the foreground. In my html, I had to make sure the album info layer was ontop the image layer by having the album info written after the album image.
 
 ## Future Implementation
-1. User input to find artist
-2. Clean up Album API call
-3. Play full song and scrolling lyrics
-4. Change Spotify and Genius links to clickable logos
-5. Add left-right scrolling instead of up down
+1. Add html input and javascript to send user input data back to server and api calls to find that artist info.
+2. Clean up Album API call(the params are `song_id[0] +','+ song_id[1]`...). Should implement a loop that creates a list variable with all the song_ids.
+3. Play full song with maybe youtube video or audio and scrape the genius lyrics page and add that lyric info to a div.
+4. Add Spotify and Genius logo images to our static folder and and replace the links with the clickable logos.
+5. Add left-right scrolling instead of up down. Maybe by hiding the current div with `display=none` javascript after clicking a right arrow. Research other left-right scrolling methods.
