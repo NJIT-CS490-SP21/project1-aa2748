@@ -19,11 +19,17 @@ This app calls Spotify's API to query new song releases and output artist info s
 2. Go to Dashboard at the Spotify Developer website and accept the latest Developer Terms of Service to complete your account setup.
 3. Register your app: https://developer.spotify.com/documentation/general/guides/app-settings/#register-your-app
 
+## Setup Genius Account
+1. Sign up at https://genius.com/
+2. Register your application and get your access token here: https://genius.com/api-clients
+3. Documentation on using Genius API located here: https://docs.genius.com/#/getting-started-h1
+
 ## Setup access token
 1. Go to your Spotify Dashboard and clicking on your app will show you a page with your `Client ID` and `Client Secret` keys.
 2. Create `.env` file in main directory
 3. Add your Client ID with the line: `export SPOTIFY_ID = 'YOUR_KEY'` (replace YOUR_KEY)
 4. Add your Client Secret with the line: `export SPOTIFY_SECRET = 'YOUR_SECRET'` (replace YOUR_SECRET)
+5. Add your Genius token with the line: `export GENIUS_AUTH = 'YOUR_TOKEN'` (replace YOUR_TOKEN)
 
 ## Run Application
 1. Run command in terminal `python main.py`
@@ -54,6 +60,3 @@ This app calls Spotify's API to query new song releases and output artist info s
 3. Play full song and scrolling lyrics
 4. Change Spotify and Genius links to clickable logos
 5. Add left-right scrolling instead of up down
-
-## TODO
-1. Genius auth readme
