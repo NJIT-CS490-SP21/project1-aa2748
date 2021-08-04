@@ -1,4 +1,5 @@
 # Project 1 - Music Discovery
+By: Andre Alvarados
 
 This app calls Spotify's API to query new song releases and output artist info such as song name, artist, and song preview to an HTML page deployed by Heroku.
 
